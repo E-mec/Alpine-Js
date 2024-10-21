@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div x-data="{name: 'Exxon', message: 'Hello <b>World</b>'}">
+        <p x-text="name"></p>
+        <p x-html="message"></p>
+    </div> 
+
+     <div x-data="{
+        message:'click to change message', change(){
+            this.message = 'Message has been changed'
+        }
+    }">
+        <span x-text="message" @click="change()"></span>
+    </div> 
+
+    <!-- Dropdown -->
+
+    <div x-data="dropdown">
+        <button @click="toggle()">Open/Close</button>
+
+        <ul x-show="open">
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+            <li>item 4</li>
+        </ul>
+    </div> 
+
+     <div x-data @click="alert('Wow you made it here')">
+        Alert
+    </div> 
+
+     <div x-data x-text="$store.customer.posts"></div>
+
+    <!-- <div x-data="{
+    name: 'Exxon',
+    age: 28,
+    gender: 'male'
+}">
+    <div x-data="{name: 'Mecnix', age: '25'}">
+        <div x-data="{name: 'mecnux'}">
+            <p x-text="gender"></p>
+        </div>
+    </div>
+</div> -->
+
+    <!-- GETTERS AND SETTERS -->
+
+    <!-- <div x-data="{
+    open: false,
+
+    get isOpen() {
+        return this.open
+    },
+
+    set isOpen(open) {
+        this.open = open;
+    },
+
+    toggle() {
+        this.isOpen = !this.isOpen;
+    }
+    }">
+        <button @click="toggle">Open/Close</button>
+
+        <div x-show="open">
+            content.....
+        </div>
+    </div> -->
+
+    <!-- X-SHOW AND X-TRANSITION -->
+
+    <!-- <div x-data="{
+    open: false,
+
+    toggle() {
+        this.open = !this.open;
+    }
+    }">
+        <button @click="toggle">Open/Close</button>
+
+        <div 
+        x-show="open" 
+        x-transition:enter.duration.1000ms
+        x-transition:leave.duration.1000ms>
+            content.....
+        </div>
+    </div> -->
+
+    <!-- X-IF -->
+
+    <!-- <div x-data="{
+    open: false,
+
+    toggle() {
+        this.open = !this.open;
+    }
+    }">
+        <button @click="toggle">Open/Close</button>
+        <template x-if="open">
+            <div>
+                content.....
+            </div>
+        </template>
+        
+    </div>  -->
+
+    <!-- X-FOR -->
+
+    <!-- <div x-data="{
+        posts: [{id:1, title: 'Post 1'}, {id: 2, title: 'Post 2'}]
+    }">
+        <template x-for="p in posts" :key="post.id">
+            <h2 x-text="p.id +'. '+p.title"></h2>
+        </template>
+</div> -->
+
+    <!-- <div x-data>
+    <template x-for="n in 10">
+        <h2 x-text="n"></h2>
+    </template>
+</div> -->
+
+    <!-- X-BIND -->
+
+    <!-- <div x-data="{clicked: false}">
+    <button :class="clicked ? 'blue' : ''" @click="clicked = !clicked">Click Me</button>
+</div>
+
+<style>
+    .blue {
+        background: blue;
+        color: white;
+    }
+
+    .red {
+        background: red;
+        color: white;
+    }
+</style>
+
+
+<div x-data="{clicked: false}">
+    <button :style="{backgroundColor: clicked ? 'red': ''}" @click="clicked = !clicked">Click Me</button>
+</div> -->
+
+    <!-- CHALLENGE -->
+
+    <!-- <div x-data="{
+    colors: ['red', 'green', 'blue', 'yellow', 'brown', 'orange']
+}">
+    <template x-for="color in colors">
+        <div style="width: 40px; height: 40px; display: inline-block; margin-left: 10px;" :style="{backgroundColor: color}"></div>
+    </template>
+</div> -->
+
+    <!-- X-ON -->
+
+    <!-- <div x-data>
+        <button @click="console.log('clicked 1')">clicked</button>
+        <input type="text" @keyup.enter="console.log('keyup enter')">
+    </div> -->
+
+    <!-- X-MODEL -->
+
+    <!-- <div x-data="{
+    keyword: null
+}">
+<input type="text" x-model="keyword" placeholder="Type your input to search">
+
+<p x-text="keyword"></p>
+</div> -->
+
+    <!-- CHALLENGE -->
+
+    <!-- <div x-data="{
+    keyword: null,
+    keywordColor: null,
+    id: null
+}">
+
+<input type="text" x-model="keyword" placeholder="Add button text">
+<input type="text" x-model="keywordColor" placeholder="Add background color">
+<input type="text" x-model="id" placeholder="Add ID">
+
+<button x-text="keyword" :id="id" :style="{backgroundColor: keywordColor}"></button>
+
+</div> -->
+
+    <!-- X-EFFECT -->
+<!-- 
+    <div x-data="{
+    name: 'Exxon', message: null
+}">
+        <p x-effect="message='Hello ' + name"></p>
+        <p x-text="message"></p>
+    </div> -->
+
+<!-- X-REF -->
+
+    <div x-data>
+        <input x-ref="inputEmail" placeholder="Email" />
+
+        <button @click="$refs.inputEmail.style.borderColor = 'red'">Click Me</button>
+    </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
